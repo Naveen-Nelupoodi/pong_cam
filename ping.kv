@@ -1,0 +1,68 @@
+<PongBall>:
+    size:50,50
+    canvas:
+        Ellipse:
+            pos : self.pos
+            size: self.size
+
+<PongPaddle>:
+    size:200,25
+    canvas:
+        Rectangle:
+            pos : self.pos
+            size: self.size
+
+
+
+
+<PongGame>:
+
+    ball : pong_ball
+    paddle: pong_paddle
+    canvas:
+        Rectangle:
+            pos : 0,self.height-100
+            size: self.width,10
+        Rectangle:
+            pos : 0,-100
+            size: 10,self.height
+        Rectangle:
+            pos : self.width-10,-100
+            size: 10,self.height
+    #Button:
+        #font_size: 40
+        #text: str("EXIT")
+        #pos : root.width-200,root.height-90
+        #size: 200,90
+        #on_press: root.close_application()
+
+
+    Label:
+        font_size: 70
+        center_x: root.width/2
+        top: root.top
+        text:str(root.paddle.score)
+
+    PongBall:
+        id:pong_ball
+        center : self.parent.center
+
+    PongPaddle:
+        id:pong_paddle
+        center_x : root.center_x
+        y : root.y
+
+    #Spinner:
+        #id: spinner_id
+        #text: "LOG"
+        #on_press: root.build_lists()
+        #font_size: 40
+        #size: 260,90
+        #pos : 0,root.height-90
+
+    Image:
+        id: vid
+        allow_stretch: True
+        keep_ratio: True
+        pos : 0,root.height-400
+        size: 300,300
